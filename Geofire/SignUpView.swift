@@ -50,7 +50,7 @@ struct SignUpView: View {
             Spacer()
             
             Button(action: {}) {
-                Text("LOGIN")
+                Text("SIGN UP")
                     .font(.title3)
                     .bold()
                     .foregroundColor(.white)
@@ -82,9 +82,10 @@ struct Textfield: View {
     var body: some View {
         HStack {
             Image(systemName: systemName)
-                .foregroundColor(Color(#colorLiteral(red: 0.7608050108, green: 0.8164883852, blue: 0.9259157777, alpha: 1)))
+                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                .font(.title)
                 .frame(width: 44, height: 44)
-                .background(Color.white)
+//                .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
                 .padding(.vertical, 1)

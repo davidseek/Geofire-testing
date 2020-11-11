@@ -8,40 +8,44 @@
 import SwiftUI
 
 struct LoginView: View {
+    
     var body: some View {
         
-        VStack {
-            VStack {
-                Text("LOGIN PAGE")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.top, 60)
-            }
-            .frame(width: screen.width, height: screen.height / 3 )
-            
-            Spacer()
-            
-            Textfields()
-            
-            Spacer()
-            
-            Button(action: {}) {
-                Text("LOGIN")
-                    .font(.title3)
-                    .bold()
-                    .foregroundColor(.white)
-            }
-            .frame(width: 120, height: 50)
-            .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
-            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+        NavigationView {
+            VStack(spacing: 30) {
+                WelcomeText()
+                
+                Textfields()
+                
+                Button(action: {}) {
+                    Text("LOGIN")
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(.white)
+                }
+                .frame(width: 120, height: 50)
+                .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
+                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
 
-            
-            
+                
+                HStack{
+                    Text("I am a new user")
+                        .font(.subheadline)
+                    
+                    
+                    NavigationLink(destination: SignUpView()) {
+                        Text("Create an acount")
+                            .font(.title3)
+                            .foregroundColor(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)))
+                    }
+                }
+                
+            }
+            .padding(.bottom)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)).opacity(0.2))
+            .edgesIgnoringSafeArea(.all)
         }
-        .padding(.bottom)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)).opacity(0.2))
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -106,3 +110,18 @@ struct Textfields: View {
 }
 
 let screen = UIScreen.main.bounds
+
+struct WelcomeText: View {
+    var body: some View {
+        VStack {
+            Text("WELCOME BACK!")
+                .font(.largeTitle)
+                .bold()
+                .padding(.top, 60)
+            
+            Text("Sign in to continue")
+                .font(.subheadline)
+        }
+        .frame(width: screen.width, height: screen.height / 5 )
+    }
+}
