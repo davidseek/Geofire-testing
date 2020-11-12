@@ -19,8 +19,14 @@ struct ContentView: View {
         Group{
             if (session.session != nil) {
                 Text("HEY! Welcome back")
+                
+                Button(action:
+                        session.signOut
+                ) {
+                    Text("Sign Out")
+                }
             } else {
-                Text("Show login Screen")
+                LoginView()
             }
         }
         .onAppear(perform: getUser)

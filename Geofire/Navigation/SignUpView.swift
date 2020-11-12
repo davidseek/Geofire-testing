@@ -9,15 +9,27 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @State var firstname = ""
-    @State var lastname = ""
+    //    @State var firstname = ""
+    //    @State var lastname = ""
     @State var email = ""
     @State var password = ""
-    @State var addressLine = ""
-    @State var city = ""
-    @State var state = ""
-    @State var zipcode = ""
+    @State var error = ""
+    @EnvironmentObject var session: SessionStore
+    //    @State var addressLine = ""
+    //    @State var city = ""
+    //    @State var state = ""
+    //    @State var zipcode = ""
     
+    func signup(){
+        session.signUp(email: email, password: password) { (result, error) in
+            if let error = error {
+                self.error = error.localizedDescription
+            } else {
+                self.email = ""
+                self.password = ""
+            }
+        }
+    }
     
     var body: some View {
         VStack {
@@ -28,18 +40,18 @@ struct SignUpView: View {
                     .padding(.top, 60)
             }
             .frame(width: screen.width, height: screen.height / 10 )
-        
+            
             Spacer()
             
             VStack {
-                Textfield(text: $firstname, systemName: "person.circle.fill", placeholderText: "firstname")
-                Textfield(text: $lastname, systemName: "person.circle.fill", placeholderText: "lastname")
+                //                Textfield(text: $firstname, systemName: "person.circle.fill", placeholderText: "firstname")
+                //                Textfield(text: $lastname, systemName: "person.circle.fill", placeholderText: "lastname")
                 Textfield(text: $email, systemName: "person.circle.fill", placeholderText: "email")
                 Textfield(text: $password, systemName: "person.circle.fill", placeholderText: "password")
-                Textfield(text: $addressLine, systemName: "person.circle.fill", placeholderText: "address")
-                Textfield(text: $city, systemName: "person.circle.fill", placeholderText: "city")
-                Textfield(text: $state, systemName: "person.circle.fill", placeholderText: "state")
-                Textfield(text: $zipcode, systemName: "person.circle.fill", placeholderText: "zip")
+                //                Textfield(text: $addressLine, systemName: "person.circle.fill", placeholderText: "address")
+                //                Textfield(text: $city, systemName: "person.circle.fill", placeholderText: "city")
+                //                Textfield(text: $state, systemName: "person.circle.fill", placeholderText: "state")
+                //                Textfield(text: $zipcode, systemName: "person.circle.fill", placeholderText: "zip")
             }
             .padding()
             .frame(maxWidth: .infinity)
@@ -50,7 +62,14 @@ struct SignUpView: View {
             
             Spacer()
             
-            Button(action: {}) {
+            if (error != ""){
+                Text("error")
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                    .padding(.all)
+            }
+            
+            Button(action: signup) {
                 Text("SIGN UP")
                     .font(.title3)
                     .bold()
@@ -70,7 +89,7 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView().environmentObject(SessionStore())
     }
 }
 
@@ -86,16 +105,16 @@ struct Textfield: View {
                 .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                 .font(.title)
                 .frame(width: 44, height: 44)
-//                .background(Color.white)
+                //                .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
                 .padding(.vertical, 1)
-                
+            
             
             TextField(placeholderText.uppercased(), text: $text)
                 .autocapitalization(.none)
                 .font(.body)
-//                .padding(.all)
+                //                .padding(.all)
                 .frame(height: 44)
         }
         Divider()
