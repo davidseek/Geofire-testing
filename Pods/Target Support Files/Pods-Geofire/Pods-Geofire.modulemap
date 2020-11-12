@@ -1,0 +1,6 @@
+framework module Pods_Geofire {
+  umbrella header "Pods-Geofire-umbrella.h"
+
+  export *
+  module * { export * }
+}

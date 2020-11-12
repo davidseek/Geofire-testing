@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>177914509709-kp4j13f04vt5kv4pclal52ie11krkjdo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.177914509709-kp4j13f04vt5kv4pclal52ie11krkjdo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCMfJmmnikw9l_iK6NWN9MPEY0pDaw8TWc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>177914509709</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>TeeksCode.Geofire</string>
+	<key>PROJECT_ID</key>
+	<string>geofireproject-37ea2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>geofireproject-37ea2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:177914509709:ios:aad87e4e100ed31ef1a5c4</string>
+	<key>DATABASE_URL</key>
+	<string>https://geofireproject-37ea2.firebaseio.com</string>
+</dict>
+</plist>

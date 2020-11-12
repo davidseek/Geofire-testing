@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30C197AC86AAD43D9BDC3441 /* Pods_Geofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE9B6042F962E287998E545 /* Pods_Geofire.framework */; };
 		F436827A255C787B008FFCAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4368279255C787B008FFCAC /* AppDelegate.swift */; };
 		F436827C255C787B008FFCAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436827B255C787B008FFCAC /* SceneDelegate.swift */; };
 		F436827E255C787B008FFCAC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436827D255C787B008FFCAC /* LoginView.swift */; };
@@ -14,9 +15,15 @@
 		F4368283255C787F008FFCAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4368282255C787F008FFCAC /* Preview Assets.xcassets */; };
 		F4368286255C787F008FFCAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4368284255C787F008FFCAC /* LaunchScreen.storyboard */; };
 		F4368290255C7CE0008FFCAC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F436828F255C7CE0008FFCAC /* SignUpView.swift */; };
+		F43682A7255C9C8D008FFCAC /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43682A6255C9C8D008FFCAC /* SessionStore.swift */; };
+		F43682AB255CB6A9008FFCAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43682AA255CB6A9008FFCAC /* ContentView.swift */; };
+		F43682AF255CBB3E008FFCAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43682AE255CBB3E008FFCAC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5AE9B6042F962E287998E545 /* Pods_Geofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4D59C1BABF24DC05C6880F4 /* Pods-Geofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geofire.release.xcconfig"; path = "Target Support Files/Pods-Geofire/Pods-Geofire.release.xcconfig"; sourceTree = "<group>"; };
+		E84E028A0F7CAA07BBF42D50 /* Pods-Geofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geofire.debug.xcconfig"; path = "Target Support Files/Pods-Geofire/Pods-Geofire.debug.xcconfig"; sourceTree = "<group>"; };
 		F4368276255C787B008FFCAC /* Geofire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geofire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4368279255C787B008FFCAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F436827B255C787B008FFCAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +33,9 @@
 		F4368285255C787F008FFCAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4368287255C787F008FFCAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F436828F255C7CE0008FFCAC /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		F43682A6255C9C8D008FFCAC /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		F43682AA255CB6A9008FFCAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F43682AE255CBB3E008FFCAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30C197AC86AAD43D9BDC3441 /* Pods_Geofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E610B61F726A05236EC73843 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E84E028A0F7CAA07BBF42D50 /* Pods-Geofire.debug.xcconfig */,
+				A4D59C1BABF24DC05C6880F4 /* Pods-Geofire.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F436826D255C787B008FFCAC = {
 			isa = PBXGroup;
 			children = (
 				F4368278255C787B008FFCAC /* Geofire */,
 				F4368277255C787B008FFCAC /* Products */,
+				E610B61F726A05236EC73843 /* Pods */,
+				F717FC8E66A321EEFDD5AFC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,9 +82,10 @@
 			children = (
 				F4368279255C787B008FFCAC /* AppDelegate.swift */,
 				F436827B255C787B008FFCAC /* SceneDelegate.swift */,
-				F436827D255C787B008FFCAC /* LoginView.swift */,
-				F436828F255C7CE0008FFCAC /* SignUpView.swift */,
+				F43682A5255C9C6E008FFCAC /* Combine */,
+				F43682A4255C9C55008FFCAC /* Navigation */,
 				F436827F255C787F008FFCAC /* Assets.xcassets */,
+				F43682AE255CBB3E008FFCAC /* GoogleService-Info.plist */,
 				F4368284255C787F008FFCAC /* LaunchScreen.storyboard */,
 				F4368287255C787F008FFCAC /* Info.plist */,
 				F4368281255C787F008FFCAC /* Preview Content */,
@@ -78,6 +101,32 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F43682A4255C9C55008FFCAC /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F436827D255C787B008FFCAC /* LoginView.swift */,
+				F436828F255C7CE0008FFCAC /* SignUpView.swift */,
+				F43682AA255CB6A9008FFCAC /* ContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F43682A5255C9C6E008FFCAC /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				F43682A6255C9C8D008FFCAC /* SessionStore.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		F717FC8E66A321EEFDD5AFC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5AE9B6042F962E287998E545 /* Pods_Geofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F436828A255C787F008FFCAC /* Build configuration list for PBXNativeTarget "Geofire" */;
 			buildPhases = (
+				C0E4CB89C6272C23BEE2C22F /* [CP] Check Pods Manifest.lock */,
 				F4368272255C787B008FFCAC /* Sources */,
 				F4368273255C787B008FFCAC /* Frameworks */,
 				F4368274255C787B008FFCAC /* Resources */,
+				8B08EF4DFEBD4E8BE5F6F7A9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F43682AF255CBB3E008FFCAC /* GoogleService-Info.plist in Resources */,
 				F4368286255C787F008FFCAC /* LaunchScreen.storyboard in Resources */,
 				F4368283255C787F008FFCAC /* Preview Assets.xcassets in Resources */,
 				F4368280255C787F008FFCAC /* Assets.xcassets in Resources */,
@@ -143,12 +195,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B08EF4DFEBD4E8BE5F6F7A9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Geofire/Pods-Geofire-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Geofire/Pods-Geofire-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Geofire/Pods-Geofire-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0E4CB89C6272C23BEE2C22F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Geofire-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F4368272255C787B008FFCAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F4368290255C7CE0008FFCAC /* SignUpView.swift in Sources */,
+				F43682AB255CB6A9008FFCAC /* ContentView.swift in Sources */,
+				F43682A7255C9C8D008FFCAC /* SessionStore.swift in Sources */,
 				F436827A255C787B008FFCAC /* AppDelegate.swift in Sources */,
 				F436827C255C787B008FFCAC /* SceneDelegate.swift in Sources */,
 				F436827E255C787B008FFCAC /* LoginView.swift in Sources */,
@@ -287,6 +383,7 @@
 		};
 		F436828B255C787F008FFCAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E84E028A0F7CAA07BBF42D50 /* Pods-Geofire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -308,6 +405,7 @@
 		};
 		F436828C255C787F008FFCAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4D59C1BABF24DC05C6880F4 /* Pods-Geofire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
