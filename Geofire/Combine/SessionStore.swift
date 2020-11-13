@@ -13,11 +13,13 @@ import Combine
 class SessionStore: ObservableObject{
     
     var didChange = PassthroughSubject<SessionStore, Never>()
+    
     @Published var session: User?{
         didSet {
             self.didChange.send(self)
         }
     }
+    
     var handle: AuthStateDidChangeListenerHandle?
     
     //Gets called whenever the user's sign-in state changes.
@@ -33,7 +35,7 @@ class SessionStore: ObservableObject{
     
     
     func signUp(email: String, password: String, handler: @escaping AuthDataResultCallback){
-        Auth.auth().createUser(withEmail: email, password: password, completion: handler)
+        Auth.auth().createUser(withEmail: email, password: password)
     }
     
     
@@ -58,44 +60,20 @@ class SessionStore: ObservableObject{
         }
     }
     
-    
     deinit {
         unbind()
     }
     
-    
 }
 
-struct User {
+
+class User {
     var uid: String
     var email: String?
-//    var firstname: String
-//    var lastname: String
-//    var password: String
-//    var addressLine: String
-//    var city: String
-//    var state: String
-//    var zipcode: String
-
-
-    init(uid: String,
-         email: String?
-//         firstname:String,
-//         lastname: String,
-//         password: String,
-//         address: String,
-//         city: String,
-//         state:String,
-//         zipcode:String
-    ) {
+    
+    init(uid: String, email: String?) {
         self.uid = uid
         self.email = email
-//        self.firstname = firstname
-//        self.lastname = lastname
-//        self.password = password
-//        self.addressLine = address
-//        self.city = city
-//        self.state = state
-//        self.zipcode = zipcode
     }
+    
 }
