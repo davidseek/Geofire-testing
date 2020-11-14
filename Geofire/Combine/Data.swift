@@ -8,23 +8,37 @@
 
 import SwiftUI
 
-
-struct Profile: Codable{
-    var name: String
-    var email: String
+struct User {
+    var uid: String
+    var email: String?
+    var firstname: String?
+    var lastname: String?
+    var password: String?
+    var error: String?
+    var addressLine: String?
+    var city: String?
+    var state: String?
+    var zipcode: String?
 }
 
-class Api {
- 
-    func getProfile() {
-        
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else{fatalError()}
-        
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            let users = try! JSONDecoder().decode([Profile].self, from: data!)
-            print(users)
-        }
-        .resume()
-    }
-    
-}
+
+
+
+//struct Profile: Codable{
+//    var name: String
+//    var email: String
+//}
+//
+//class Api {
+//
+//    func getProfile() {
+//        guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else{fatalError()}
+//
+//        URLSession.shared.dataTask(with: url) { (data, _, _) in
+//            let users = try! JSONDecoder().decode([Profile].self, from: data!)
+//            print(users)
+//        }
+//        .resume()
+//    }
+//
+//}

@@ -11,9 +11,13 @@ struct LoginView: View {
     @State var registeredEmail = ""
     @State var registeredPassword = ""
     @State var error = ""
-    @State var show = false
-    @State var loggedIn = false
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var user: UserStore
+    
+    
+    func saveToUserDefault(){
+        UserDefaults.standard.set(true, forKey: "isLogged")
+    }
     
     func signin(){
         session.signIn(email: registeredEmail, password: registeredPassword) { (result, error) in
@@ -24,7 +28,8 @@ struct LoginView: View {
             } else{
                 self.registeredEmail = ""
                 self.registeredPassword = ""
-                self.loggedIn = true
+                user.isLogged = true
+                saveToUserDefault()
             }
         }
     }
@@ -32,55 +37,60 @@ struct LoginView: View {
     var body: some View {
         
         ZStack {
-            NavigationView {
-                VStack(spacing: 30) {
-                    WelcomeText()
-                    
-                    //Textfield UI
-                    TextfieldView(registeredEmail: $registeredEmail, registeredPassword: $registeredPassword)
-                    
-                    Button(action:{
-                        signin()
-                    }) {
-                        Text("LOGIN")
-                            .font(.title3)
-                            .bold()
-                            .foregroundColor(.white)
-                            .frame(width: 120, height: 50)
-                            .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
-                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                    }
-                    
-                    
-                    VStack {
-                        HStack{
-                            Text("I am a new user")
-                                .font(.subheadline)
-                            
-                            
-                            NavigationLink(destination: SignUpView()) {
-                                Text("Create an acount")
-                                    .font(.title3)
-                                    .foregroundColor(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)))
-                            }
+            VStack(spacing: 30) {
+                WelcomeText()
+                
+                //Textfield UI
+                TextfieldView(registeredEmail: $registeredEmail, registeredPassword: $registeredPassword)
+                
+                Button(action:{
+                    signin()
+                }) {
+                    Text("LOGIN")
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(.white)
+                        .frame(width: 120, height: 50)
+                        .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)))
+                        .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                }
+                
+                
+                VStack {
+                    HStack{
+                        Text("I am a new user")
+                            .font(.subheadline)
+                        
+                        Button(action:{
+                            user.showSignUpView = true
+                        }) {
+                            Text("Create an acount")
+                                .font(.title3)
+                                .foregroundColor(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)))
                         }
                         
-                        if (error != ""){
-                            Text(error)
-                                .font(.subheadline)
-                                .bold()
-                                .foregroundColor(.red)
-                        }
                     }
                     
+                    if (error != ""){
+                        Text(error)
+                            .font(.subheadline)
+                            .bold()
+                            .foregroundColor(.red)
+                    }
                 }
-                .padding(.bottom)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)).opacity(0.2))
-                .edgesIgnoringSafeArea(.all)
+                
+            }
+            .padding(.bottom)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)).opacity(0.2))
+            .edgesIgnoringSafeArea(.all)
+            
+            
+            if user.showSignUpView {
+                SignUpView()
             }
             
-            if loggedIn {
+            if user.isLogged {
                 HomeView()
             }
             

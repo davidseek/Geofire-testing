@@ -19,6 +19,8 @@
 		F43682AF255CBB3E008FFCAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43682AE255CBB3E008FFCAC /* GoogleService-Info.plist */; };
 		F437AA70255E11A40026E7CF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F437AA6F255E11A40026E7CF /* HomeView.swift */; };
 		F43AE042255F60C100586672 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43AE041255F60C100586672 /* Utilities.swift */; };
+		F43AE046256057A500586672 /* LongLatConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43AE045256057A500586672 /* LongLatConverterView.swift */; };
+		F43AE04E25606DF900586672 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43AE04D25606DF900586672 /* UserStore.swift */; };
 		F44038E8255EF4E800040845 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44038E7255EF4E700040845 /* Data.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		F43682AE255CBB3E008FFCAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F437AA6F255E11A40026E7CF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F43AE041255F60C100586672 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		F43AE045256057A500586672 /* LongLatConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongLatConverterView.swift; sourceTree = "<group>"; };
+		F43AE04D25606DF900586672 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		F44038E7255EF4E700040845 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +90,7 @@
 			children = (
 				F4368279255C787B008FFCAC /* AppDelegate.swift */,
 				F436827B255C787B008FFCAC /* SceneDelegate.swift */,
+				F43AE0442560578000586672 /* Helper */,
 				F43682A5255C9C6E008FFCAC /* Combine */,
 				F43682A4255C9C55008FFCAC /* Navigation */,
 				F436827F255C787F008FFCAC /* Assets.xcassets */,
@@ -120,9 +125,18 @@
 			children = (
 				F43682A6255C9C8D008FFCAC /* SessionStore.swift */,
 				F44038E7255EF4E700040845 /* Data.swift */,
-				F43AE041255F60C100586672 /* Utilities.swift */,
 			);
 			path = Combine;
+			sourceTree = "<group>";
+		};
+		F43AE0442560578000586672 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F43AE041255F60C100586672 /* Utilities.swift */,
+				F43AE04D25606DF900586672 /* UserStore.swift */,
+				F43AE045256057A500586672 /* LongLatConverterView.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		F717FC8E66A321EEFDD5AFC3 /* Frameworks */ = {
@@ -254,6 +268,8 @@
 				F436827A255C787B008FFCAC /* AppDelegate.swift in Sources */,
 				F436827C255C787B008FFCAC /* SceneDelegate.swift in Sources */,
 				F436827E255C787B008FFCAC /* LoginView.swift in Sources */,
+				F43AE04E25606DF900586672 /* UserStore.swift in Sources */,
+				F43AE046256057A500586672 /* LongLatConverterView.swift in Sources */,
 				F43AE042255F60C100586672 /* Utilities.swift in Sources */,
 				F44038E8255EF4E800040845 /* Data.swift in Sources */,
 			);

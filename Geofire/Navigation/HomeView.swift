@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
-    @State var loggedOut =  false
+    @EnvironmentObject var user: UserStore
+    @State var currentAddress = ""
     
     
     var body: some View {
@@ -18,15 +20,42 @@ struct HomeView: View {
             Color.white.edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 10) {
-                Text("GOOD TO SEE YOU!")
-                    .font(.largeTitle)
-                    .bold()
-                    .foregroundColor(.orange)
-                    .padding()
+                HStack {
+                    TextField("Enter an address", text: $currentAddress)
+                        .font(.title2)
+                        .frame(height: 45)
+                        .padding(.leading)
+                    
+                    Button(action: {
+                        
+                        CoordinateConvert().convertAddressToCoords(for: currentAddress) { (location) in
+                            print("Longitude is \(String(describing: location?.longitude))")
+                            print("Latitude is: \(String(describing: location?.latitude))")
+                        }
+                    }) {
+                        Text("Search")
+                    }
+                    .frame(height: 45)
+                    .padding(.leading)
+                    .padding(.trailing)
+                    
+                }
+                
+                VStack {
+                    Text("List of items that fits the criteria")
+                        .font(.largeTitle)
+                        .bold()
+                        .foregroundColor(.orange)
+                        .frame(height: screen.height * 0.7)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                }
                 
                 Button(action:{
                     session.signOut()
-                    self.loggedOut = true
+                    UserDefaults.standard.set(false, forKey: "isLogged")
+                    user.isLogged = false
+                    user.showLoginView = true
                     
                 }) {
                     Text("Sign Out")
@@ -38,10 +67,9 @@ struct HomeView: View {
             .edgesIgnoringSafeArea(.all)
             
             
-            if loggedOut {
+            if user.showLoginView {
                 LoginView()
             }
-            
         }
     }
 }
@@ -49,5 +77,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(SessionStore()).environmentObject(UserStore())
     }
 }

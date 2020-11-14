@@ -11,6 +11,7 @@ import FirebaseDatabase
 struct SignUpView: View {
     @State var database: DatabaseReference!
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var user: UserStore
     @State var firstname = ""
     @State var lastname = ""
     @State var email = ""
@@ -24,7 +25,6 @@ struct SignUpView: View {
     
     
     func signup(){
-        
         // check for empty fields
         if firstname.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             lastname.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -47,7 +47,9 @@ struct SignUpView: View {
         }
         
         signUpToFirebase()
-        
+        user.isLogged = true
+        user.showLoginView = false
+        user.showSignUpView = false
         signUpSuccessful = true
     }
     
@@ -67,7 +69,6 @@ struct SignUpView: View {
         
         addToDatabase()
     }
-    
     
     func addToDatabase(){
         database = Database.database().reference()
@@ -102,13 +103,25 @@ struct SignUpView: View {
         
         ZStack {
             VStack {
-                VStack {
+                ZStack {
                     Text("SIGN UP")
                         .font(.largeTitle)
                         .bold()
                         .padding(.top, 60)
+                        .frame(width: screen.width, height: screen.height / 10 )
+                    
+                    HStack {
+                        Spacer()
+                        Image(systemName: "xmark")
+                            .frame(width: 36, height:36)
+                            .foregroundColor(.white)
+                            .background(Color.black.clipShape(Circle()))
+                    }
+                    .padding()
+                    .onTapGesture {
+                        user.showSignUpView = false
+                    }
                 }
-                .frame(width: screen.width, height: screen.height / 10 )
                 
                 Spacer()
                 
@@ -155,6 +168,7 @@ struct SignUpView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)).opacity(0.2))
             .edgesIgnoringSafeArea(.all)
+            
             
             if signUpSuccessful{
                 HomeView()
