@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email = ""
-    @State var password = ""
+    @State var registeredEmail = ""
+    @State var registeredPassword = ""
     @State var error = ""
     @State var show = false
-    @State var isSuccess = false
+    @State var loggedIn = false
     @EnvironmentObject var session: SessionStore
     
     func signin(){
-        session.signIn(email: email, password: password) { (result, error) in
+        session.signIn(email: registeredEmail, password: registeredPassword) { (result, error) in
             
             if let error = error{
                 self.error = error.localizedDescription
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) { self.error = "" }
             } else{
-                self.email = ""
-                self.password = ""
-                self.isSuccess = true
+                self.registeredEmail = ""
+                self.registeredPassword = ""
+                self.loggedIn = true
             }
         }
     }
@@ -37,7 +37,7 @@ struct LoginView: View {
                     WelcomeText()
                     
                     //Textfield UI
-                    TextfieldView(email: $email, password: $password)
+                    TextfieldView(registeredEmail: $registeredEmail, registeredPassword: $registeredPassword)
                     
                     Button(action:{
                         signin()
@@ -58,7 +58,7 @@ struct LoginView: View {
                                 .font(.subheadline)
                             
                             
-                            NavigationLink(destination: SignUpView(loginSuccessful: $isSuccess)) {
+                            NavigationLink(destination: SignUpView()) {
                                 Text("Create an acount")
                                     .font(.title3)
                                     .foregroundColor(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)))
@@ -80,8 +80,7 @@ struct LoginView: View {
                 .edgesIgnoringSafeArea(.all)
             }
             
-            
-            if isSuccess{
+            if loggedIn {
                 HomeView()
             }
             
@@ -116,8 +115,8 @@ struct WelcomeText: View {
 }
 
 struct TextfieldView: View {
-    @Binding var email: String
-    @Binding var password: String
+    @Binding var registeredEmail: String
+    @Binding var registeredPassword: String
     
     var body: some View {
         VStack(spacing: 6) {
@@ -130,7 +129,7 @@ struct TextfieldView: View {
                     .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 5)
                     .padding(.leading)
                 
-                TextField("YOUR EMAIL", text: $email)
+                TextField("YOUR EMAIL", text: $registeredEmail)
                     .keyboardType(.emailAddress)
                     .autocapitalization(.none)
                     .font(.body)
@@ -152,7 +151,7 @@ struct TextfieldView: View {
                 
                 
                 
-                SecureField("PASSWORD", text: $password)
+                SecureField("PASSWORD", text: $registeredPassword)
                     .font(.body)
                     .autocapitalization(.none)
                     .padding(.leading)

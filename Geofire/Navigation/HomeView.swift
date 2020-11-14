@@ -9,47 +9,40 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
+    @State var loggedOut =  false
     
-    func getUser(){
-        session.listen()
-    }
     
     var body: some View {
         
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
             
-            if (session.session != nil) {
+            VStack(spacing: 10) {
+                Text("GOOD TO SEE YOU!")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.orange)
+                    .padding()
                 
-                VStack(spacing: 10) {
-                    Text("GOOD TO SEE YOU!")
-                        .font(.largeTitle)
-                        .bold()
-                        .foregroundColor(.orange)
-                        .padding()
+                Button(action:{
+                    session.signOut()
+                    self.loggedOut = true
                     
-                    Button(action:{
-                        session.signOut()
-                        
-                    }) {
-                        Text("Sign Out")
-                    }
-                    
+                }) {
+                    Text("Sign Out")
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)).opacity(0.2))
-                .edgesIgnoringSafeArea(.all)
-                
-            } else {
-                
-                LoginView()
                 
             }
-        
-                
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)).opacity(0.2))
+            .edgesIgnoringSafeArea(.all)
+            
+            
+            if loggedOut {
+                LoginView()
+            }
+            
         }
-        .onAppear(perform: getUser)
-
     }
 }
 

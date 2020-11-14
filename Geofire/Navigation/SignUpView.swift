@@ -20,18 +20,45 @@ struct SignUpView: View {
     @State var city = ""
     @State var state = ""
     @State var zipcode = ""
-    @Binding var loginSuccessful: Bool
-
+    @State var signUpSuccessful = false
     
-    //    func hideKeyboard(){
-    //        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    //    }
     
     func signup(){
+        
+        // check for empty fields
+        if firstname.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            lastname.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            email.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            password.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            addressLine.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            city.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            state.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            zipcode.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            error = "please fill in all fields"
+            return
+        }
+        
+        //check for valid password
+        let cleanPassword = password.trimmingCharacters(in: .whitespacesAndNewlines)
+        if Utilities.isPasswordValid(cleanPassword) == false{
+            error = " Please make sure to include special characters and numbers in your password"
+            return
+        }
+        
+        signUpToFirebase()
+        
+        signUpSuccessful = true
+    }
+    
+    
+    func signUpToFirebase(){
+        
         session.signUp(email: email, password: password) { (result, error) in
             if let error = error{
                 self.error = error.localizedDescription
                 return
+                
             } else {
                 self.email = ""
                 self.password = ""
@@ -41,19 +68,6 @@ struct SignUpView: View {
         addToDatabase()
     }
     
-//    func signup(){
-//        session.signUp(email: email, password: password) { (result, error) in
-//            if let error = error{
-//                self.error = error.localizedDescription
-//                return
-//            } else {
-//                self.email = ""
-//                self.password = ""
-//            }
-//        }
-//
-//        addToDatabase()
-//    }
     
     func addToDatabase(){
         database = Database.database().reference()
@@ -63,12 +77,26 @@ struct SignUpView: View {
             "id": key,
             "name": firstname + lastname,
             "email": email,
-            "address": addressLine + "," + city + "," + state.uppercased() + "," + zipcode
+            "address": addressLine + ", " + city + ", " + state.uppercased() + " " + zipcode
+            // add long and lat here
         ]
         
         database.child(key).setValue(userData)
     }
     
+    //    func signup(){
+    //        session.signUp(email: email, password: password) { (result, error) in
+    //            if let error = error{
+    //                self.error = error.localizedDescription
+    //                return
+    //            } else {
+    //                self.email = ""
+    //                self.password = ""
+    //            }
+    //        }
+    //
+    //        addToDatabase()
+    //    }
     
     var body: some View {
         
@@ -112,7 +140,6 @@ struct SignUpView: View {
                 
                 Button(action: {
                     signup()
-                    loginSuccessful = true
                 }) {
                     Text("SIGN UP")
                         .font(.title3)
@@ -129,7 +156,7 @@ struct SignUpView: View {
             .background(Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)).opacity(0.2))
             .edgesIgnoringSafeArea(.all)
             
-            if loginSuccessful{
+            if signUpSuccessful{
                 HomeView()
             }
         }
@@ -140,7 +167,7 @@ struct SignUpView: View {
 // MARK: Subviews
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(loginSuccessful: .constant(false)).environmentObject(SessionStore())
+        SignUpView().environmentObject(SessionStore())
     }
 }
 
