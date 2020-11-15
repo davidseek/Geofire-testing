@@ -73,6 +73,8 @@ class AuthManager {
         }
         /// We want to add the whole payload for later processing...
         /// And we want to add all users into a subfolder Users on the database...
+        /// Plus: Every user NEEDS to be stored into a folder of their userID,
+        /// so that we can download the user to present better information than just the ID :) 
         database.child("Users").child(payload.uid!).setValue(jsonData)
     }
 }
