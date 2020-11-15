@@ -43,7 +43,9 @@ struct ContentView: View {
             }
             
             if appManager.isHome {
-                HomeView(onAction: appManager.homeViewActionHandler)
+                HomeView(
+                    locations: $appManager.geoLocations,
+                    onAction: appManager.homeViewActionHandler)
             }
         }
     }

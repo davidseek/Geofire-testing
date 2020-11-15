@@ -162,7 +162,7 @@ struct SignUpView: View {
 }
 
 
-// MARK: Subviews
+// MARK: - Subviews
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()

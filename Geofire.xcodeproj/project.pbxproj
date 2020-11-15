@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		30C197AC86AAD43D9BDC3441 /* Pods_Geofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE9B6042F962E287998E545 /* Pods_Geofire.framework */; };
+		6C0053CA2561DA3F009C124D /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053BC2561DA3D009C124D /* GFGeoHashQuery.m */; };
+		6C0053CB2561DA3F009C124D /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053BD2561DA3D009C124D /* GFGeoHash.m */; };
+		6C0053CC2561DA3F009C124D /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053BE2561DA3E009C124D /* GeoFire.m */; };
+		6C0053CD2561DA3F009C124D /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053C12561DA3E009C124D /* GFBase32Utils.m */; };
+		6C0053CE2561DA3F009C124D /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053C42561DA3E009C124D /* GFQuery.m */; };
+		6C0053D52561DAF6009C124D /* GeoFireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053D42561DAF5009C124D /* GeoFireManager.swift */; };
+		6C0053D82561DB2B009C124D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053D72561DB2B009C124D /* LocationManager.swift */; };
+		6C0053DC2561DBFD009C124D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053DB2561DBFD009C124D /* Array.swift */; };
+		6C0053E02561DE8F009C124D /* GeoFireObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0053DF2561DE8F009C124D /* GeoFireObject.swift */; };
 		6C3BC8ED2561BCD1005FC86E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3BC8EC2561BCD1005FC86E /* ContentView.swift */; };
 		6C3BC8F32561BD3C005FC86E /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3BC8F22561BD3C005FC86E /* AppManager.swift */; };
 		6C3BC8FA2561C851005FC86E /* RegistrationPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3BC8F92561C851005FC86E /* RegistrationPayload.swift */; };
@@ -29,6 +38,25 @@
 
 /* Begin PBXFileReference section */
 		5AE9B6042F962E287998E545 /* Pods_Geofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C0053BB2561DA3D009C124D /* Geofire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Geofire-Bridging-Header.h"; sourceTree = "<group>"; };
+		6C0053BC2561DA3D009C124D /* GFGeoHashQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHashQuery.m; sourceTree = "<group>"; };
+		6C0053BD2561DA3D009C124D /* GFGeoHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHash.m; sourceTree = "<group>"; };
+		6C0053BE2561DA3E009C124D /* GeoFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFire.m; sourceTree = "<group>"; };
+		6C0053BF2561DA3E009C124D /* GFRegionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFRegionQuery.h; sourceTree = "<group>"; };
+		6C0053C02561DA3E009C124D /* GFGeoHashQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHashQuery.h; sourceTree = "<group>"; };
+		6C0053C12561DA3E009C124D /* GFBase32Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFBase32Utils.m; sourceTree = "<group>"; };
+		6C0053C22561DA3E009C124D /* GFBase32Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFBase32Utils.h; sourceTree = "<group>"; };
+		6C0053C32561DA3E009C124D /* GFGeoHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHash.h; sourceTree = "<group>"; };
+		6C0053C42561DA3E009C124D /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
+		6C0053C52561DA3E009C124D /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
+		6C0053C62561DA3E009C124D /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
+		6C0053C72561DA3F009C124D /* GFQuery+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GFQuery+Private.h"; sourceTree = "<group>"; };
+		6C0053C82561DA3F009C124D /* GFQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFQuery.h; sourceTree = "<group>"; };
+		6C0053C92561DA3F009C124D /* GeoFire+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire+Private.h"; sourceTree = "<group>"; };
+		6C0053D42561DAF5009C124D /* GeoFireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFireManager.swift; sourceTree = "<group>"; };
+		6C0053D72561DB2B009C124D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6C0053DB2561DBFD009C124D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		6C0053DF2561DE8F009C124D /* GeoFireObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoFireObject.swift; sourceTree = "<group>"; };
 		6C3BC8EC2561BCD1005FC86E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C3BC8F22561BD3C005FC86E /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		6C3BC8F92561C851005FC86E /* RegistrationPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPayload.swift; sourceTree = "<group>"; };
@@ -64,11 +92,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C0053BA2561DA1F009C124D /* Geofire */ = {
+			isa = PBXGroup;
+			children = (
+				6C0053C52561DA3E009C124D /* GeoFire.h */,
+				6C0053BE2561DA3E009C124D /* GeoFire.m */,
+				6C0053C92561DA3F009C124D /* GeoFire+Private.h */,
+				6C0053C22561DA3E009C124D /* GFBase32Utils.h */,
+				6C0053C12561DA3E009C124D /* GFBase32Utils.m */,
+				6C0053C62561DA3E009C124D /* GFCircleQuery.h */,
+				6C0053C32561DA3E009C124D /* GFGeoHash.h */,
+				6C0053BD2561DA3D009C124D /* GFGeoHash.m */,
+				6C0053C02561DA3E009C124D /* GFGeoHashQuery.h */,
+				6C0053BC2561DA3D009C124D /* GFGeoHashQuery.m */,
+				6C0053C82561DA3F009C124D /* GFQuery.h */,
+				6C0053C42561DA3E009C124D /* GFQuery.m */,
+				6C0053C72561DA3F009C124D /* GFQuery+Private.h */,
+				6C0053BF2561DA3E009C124D /* GFRegionQuery.h */,
+			);
+			path = Geofire;
+			sourceTree = "<group>";
+		};
+		6C0053DA2561DBF1009C124D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6C0053DB2561DBFD009C124D /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6C3BC8F02561BD24005FC86E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				6C3BC8F22561BD3C005FC86E /* AppManager.swift */,
 				F43682A6255C9C8D008FFCAC /* AuthManager.swift */,
+				6C0053D42561DAF5009C124D /* GeoFireManager.swift */,
+				6C0053D72561DB2B009C124D /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -87,6 +146,7 @@
 		6CD8A13E2561BC01002CF19F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6C0053BB2561DA3D009C124D /* Geofire-Bridging-Header.h */,
 				F4368279255C787B008FFCAC /* AppDelegate.swift */,
 				F436827B255C787B008FFCAC /* SceneDelegate.swift */,
 				F436827F255C787F008FFCAC /* Assets.xcassets */,
@@ -132,6 +192,7 @@
 				6C3BC8F02561BD24005FC86E /* Managers */,
 				F43682A5255C9C6E008FFCAC /* Models */,
 				F43AE0442560578000586672 /* Utils */,
+				6C0053DA2561DBF1009C124D /* Extensions */,
 				F4368281255C787F008FFCAC /* Preview Content */,
 			);
 			path = Geofire;
@@ -150,6 +211,7 @@
 			children = (
 				F44038E7255EF4E700040845 /* User.swift */,
 				6C3BC8F92561C851005FC86E /* RegistrationPayload.swift */,
+				6C0053DF2561DE8F009C124D /* GeoFireObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +219,7 @@
 		F43AE0442560578000586672 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6C0053BA2561DA1F009C124D /* Geofire */,
 				F43AE041255F60C100586672 /* Utilities.swift */,
 				F43AE045256057A500586672 /* LongLatConverterView.swift */,
 				6C3BC91F2561D620005FC86E /* FirebaseEncoder.swift */,
@@ -205,6 +268,7 @@
 				TargetAttributes = {
 					F4368275255C787B008FFCAC = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -291,13 +355,22 @@
 				6C3BC8ED2561BCD1005FC86E /* ContentView.swift in Sources */,
 				F437AA70255E11A40026E7CF /* HomeView.swift in Sources */,
 				6C3BC8F32561BD3C005FC86E /* AppManager.swift in Sources */,
+				6C0053CD2561DA3F009C124D /* GFBase32Utils.m in Sources */,
 				F43682A7255C9C8D008FFCAC /* AuthManager.swift in Sources */,
+				6C0053CC2561DA3F009C124D /* GeoFire.m in Sources */,
 				6C3BC9202561D620005FC86E /* FirebaseEncoder.swift in Sources */,
 				F436827A255C787B008FFCAC /* AppDelegate.swift in Sources */,
+				6C0053DC2561DBFD009C124D /* Array.swift in Sources */,
+				6C0053CB2561DA3F009C124D /* GFGeoHash.m in Sources */,
 				F436827C255C787B008FFCAC /* SceneDelegate.swift in Sources */,
 				F436827E255C787B008FFCAC /* LoginView.swift in Sources */,
+				6C0053D82561DB2B009C124D /* LocationManager.swift in Sources */,
+				6C0053E02561DE8F009C124D /* GeoFireObject.swift in Sources */,
+				6C0053CA2561DA3F009C124D /* GFGeoHashQuery.m in Sources */,
+				6C0053D52561DAF6009C124D /* GeoFireManager.swift in Sources */,
 				F43AE046256057A500586672 /* LongLatConverterView.swift in Sources */,
 				6C3BC8FA2561C851005FC86E /* RegistrationPayload.swift in Sources */,
+				6C0053CE2561DA3F009C124D /* GFQuery.m in Sources */,
 				F43AE042255F60C100586672 /* Utilities.swift in Sources */,
 				F44038E8255EF4E800040845 /* User.swift in Sources */,
 			);
@@ -439,6 +512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Geofire/Preview Content\"";
 				DEVELOPMENT_TEAM = PB7Y6QU5LD;
@@ -450,6 +524,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TeeksCode.Geofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Geofire/Supporting Files/Geofire-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -461,6 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Geofire/Preview Content\"";
 				DEVELOPMENT_TEAM = PB7Y6QU5LD;
@@ -472,6 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TeeksCode.Geofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Geofire/Supporting Files/Geofire-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -22,9 +22,10 @@ struct HomeView: View {
     /// We'll make it optional so the preview isn't losing it's shit
     private let actionHandler: ((HomeViewAction) -> Void)?
 
-    @State var currentAddress = ""
+    @Binding private var locations: [GeoFireObject]
     
-    init(onAction: ((HomeViewAction) -> Void)? = nil) {
+    init(locations: Binding<[GeoFireObject]>, onAction: ((HomeViewAction) -> Void)? = nil) {
+        self._locations = locations
         actionHandler = onAction
     }
     
@@ -36,35 +37,34 @@ struct HomeView: View {
                 Color.white.edgesIgnoringSafeArea(.all)
                 
                 VStack(spacing: 10) {
-                    HStack {
-                        TextField("Enter an address", text: $currentAddress)
-                            .font(.title2)
-                            .frame(height: 45)
-                            .padding(.leading)
-                        
-                        Button(action: {
-                            
-                            CoordinateConvert().convertAddressToCoords(for: currentAddress) { (location) in
-                                print("Longitude is \(String(describing: location?.longitude))")
-                                print("Latitude is: \(String(describing: location?.latitude))")
-                            }
-                        }) {
-                            Text("Search")
-                        }
-                        .frame(height: 45)
-                        .padding(.leading)
-                        .padding(.trailing)
-                        
-                    }
                     
-                    VStack {
-                        Text("List of items that fits the criteria")
-                            .font(.largeTitle)
-                            .bold()
-                            .foregroundColor(.orange)
-                            .frame(height: geometry.size.height * 0.7)
-                            .frame(maxWidth: .infinity)
-                            .padding()
+                    /// This should not be necessary.
+                    /// The default should always be, that the user sees what's around him
+                    /// Taken from the location of the phone
+                    
+//                    HStack {
+//                        TextField("Enter an address", text: $currentAddress)
+//                            .font(.title2)
+//                            .frame(height: 45)
+//                            .padding(.leading)
+//
+//                        Button(action: {
+//
+//                            CoordinateConvert().convertAddressToCoords(for: currentAddress) { (location) in
+//                                print("Longitude is \(String(describing: location?.longitude))")
+//                                print("Latitude is: \(String(describing: location?.latitude))")
+//                            }
+//                        }) {
+//                            Text("Search")
+//                        }
+//                        .frame(height: 45)
+//                        .padding(.leading)
+//                        .padding(.trailing)
+//
+//                    }
+                    
+                    ForEach(locations) { location in
+                        Text(location.query)
                     }
                     
                     Button(action:{
@@ -84,6 +84,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(locations: .constant([]))
     }
 }

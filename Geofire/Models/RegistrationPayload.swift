@@ -15,4 +15,7 @@ struct RegistrationPayload: Codable {
     var city: String
     var state: String
     var zipcode: String
+    /// uid will be set in the very last step
+    /// so initiallt we need it to be nil
+    var uid: String?
 }

@@ -39,12 +39,14 @@ class AuthManager {
     public func register(_ email: String, password: String, payload: RegistrationPayload) {
         print("attempting register with \(email), \(password)")
 
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] _, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
             }
-            self?.uploadUser(payload)
+            var finalPayload = payload
+            finalPayload.uid = result!.user.uid
+            self?.uploadUser(finalPayload)
         }
     }
 
@@ -65,15 +67,12 @@ class AuthManager {
         }
     }
     
-    private func uploadUser(_ payload: RegistrationPayload){
-        guard let key = database.childByAutoId().key else{
-            return
-        }
+    private func uploadUser(_ payload: RegistrationPayload) {
         guard let jsonData = try? FirebaseEncoder().encode(payload) else{
             return
         }
         /// We want to add the whole payload for later processing...
         /// And we want to add all users into a subfolder Users on the database...
-        database.child("Users").child(key).setValue(jsonData)
+        database.child("Users").child(payload.uid!).setValue(jsonData)
     }
 }

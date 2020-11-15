@@ -150,7 +150,7 @@ class _FirebaseEncoder : Encoder {
 }
 
 fileprivate struct _FirebaseEncodingStorage {
-    // MARK: Properties
+    // MARK: - Properties
     /// The container stack.
     /// Elements may be any one of the plist types (NSNumber, NSString, NSDate, NSArray, NSDictionary).
     private(set) fileprivate var containers: [NSObject] = []
@@ -189,7 +189,7 @@ fileprivate struct _FirebaseEncodingStorage {
 fileprivate struct _FirebaseKeyedEncodingContainer<K : CodingKey> : KeyedEncodingContainerProtocol {
     typealias Key = K
     
-    // MARK: Properties
+    // MARK: - Properties
     /// A reference to the encoder we're writing to.
     private let encoder: _FirebaseEncoder
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 /// AppState literally defines the state our app is in
 private enum AppState {
@@ -29,6 +30,9 @@ private enum AppState {
 class AppManager: ObservableObject {
     
     private let authManager = AuthManager()
+    private let locationManager = LocationManager()
+    private let geoFireManager: GeoFireManager
+    
     private var state: AppState = .idle {
         willSet {
             objectWillChange.send()
@@ -38,12 +42,15 @@ class AppManager: ObservableObject {
         }
     }
     
+    @Published var geoLocations: [GeoFireObject] = [] { willSet { objectWillChange.send() } }
+    
     public var isIdling: Bool { return state == .idle }
     public var isHome: Bool { return state == .home }
     public var isLoggingIn: Bool { return state == .login }
     public var isRegistering: Bool { return state == .registration }
     
     init() {
+        geoFireManager = GeoFireManager(locationManager: locationManager)
         setAuthObserver()
     }
     
@@ -85,6 +92,7 @@ class AppManager: ObservableObject {
             print("auth state did change")
             let newState: AppState = (user == nil) ? .login : .home
             self?.updateState(to: newState)
+            self?.updateLocation(for: user)
         }
     }
     
@@ -93,5 +101,35 @@ class AppManager: ObservableObject {
         DispatchQueue.main.async { [weak self] in
             self?.state = state
         }
+    }
+    
+    /// Whenever the user logs in, we're updating his location on geofire
+    /// This is not perfect. Best case we want to update the user's location
+    /// whenever his location actually changes or whenever the user opens the app
+    private func updateLocation(for user: FirebaseAuth.User?) {
+        guard let user = user else {
+            print("Error in updateLocation, user is nil")
+            return
+        }
+        guard let location = locationManager.gpsLocation else {
+            print("Error in updateLocation, location is nil")
+            return
+        }
+        /// And whenever we update the user's location
+        /// we also want to crawl everything that is around him
+        geoFireManager.setLocation(for: user.uid, location)
+        setLocations(for: user.uid, around: location)
+    }
+    
+    /// Get everything that's around the user
+    private func setLocations(for userID: String, around location: CLLocation) {
+
+        /// First set the observer
+        geoFireManager.setLocationObserver { [weak self] locations in
+            self?.geoLocations = locations
+        }
+        
+        /// And then fire the request'
+        geoFireManager.queryLocation(location, userID: userID)
     }
 }
